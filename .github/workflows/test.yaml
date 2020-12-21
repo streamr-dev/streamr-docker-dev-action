@@ -1,0 +1,11 @@
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Testing streamr-docker-dev-action
+    steps:
+    - uses: actions/checkout@v2
+    - uses: streamr-dev/streamr-docker-dev-action@master
+    - run: curl -v http://localhost/api/v1/products
+      shell: bash
