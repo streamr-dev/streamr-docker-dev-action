@@ -6,7 +6,7 @@ jobs:
     name: Testing streamr-docker-dev-action
     steps:
     - uses: actions/checkout@v2
-    - uses: streamr-dev/streamr-docker-dev-action@dev-set-sdd-to-path
+    - uses: streamr-dev/streamr-docker-dev-action@master
       with:
         services-to-start: 'redis'
     - run: curl -v http://localhost/api/v1/products
