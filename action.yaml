@@ -9,11 +9,13 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: git clone --depth 1 https://github.com/streamr-dev/streamr-docker-dev.git
+    - run: |
+          git clone --depth 1 https://github.com/streamr-dev/streamr-docker-dev.git
+          cp streamr-docker-dev/streamr-docker-dev/bin.sh streamr-docker-dev/streamr-docker-dev/streamr-docker-dev
+          echo "$(pwd)/streamr-docker-dev/streamr-docker-dev" >> $GITHUB_PATH
       shell: bash
     - run: |
           sudo ifconfig docker0 10.200.10.1/24
-          ./streamr-docker-dev/bin.sh start ${{ inputs.services-to-start }}
-          ./streamr-docker-dev/bin.sh wait
+          streamr-docker-dev start ${{ inputs.services-to-start }}
+          streamr-docker-dev wait
       shell: bash
-      working-directory: streamr-docker-dev

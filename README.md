@@ -11,7 +11,8 @@
 
 ## Description
 `streamr-docker-dev-action` is a custom GitHub Action that:
-- Clones [streamr-docker-dev](https://github.com/streamr-dev/streamr-docker-dev/) command line tool (available via `./streamr-docker-dev/streamr-docker-dev/bin.sh`)
+- Clones [streamr-docker-dev](https://github.com/streamr-dev/streamr-docker-dev/) command line tool
+- Sets command `streamr-docker-dev` to `$PATH`
 - Starts Streamr Docker stack
 
 ## Required input arguments
