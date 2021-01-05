@@ -4,12 +4,14 @@
   </a>
 </p>
 <h1 align="left"></h1>
-# streamr-docker-dev-action
-![.github/workflows/test.yaml](https://github.com/streamr-dev/streamr-docker-dev-action/workflows/.github/workflows/test.yaml/badge.svg)
+
+# streamr-docker-dev GitHub Action
+
+![Test](https://github.com/streamr-dev/streamr-docker-dev-action/workflows/Test/badge.svg)
 
 ## Description
 `streamr-docker-dev-action` is a custom GitHub Action that:
-- Clones `streamr-docker-dev` command line tool (available via `./streamr-docker-dev/streamr-docker-dev/bin.sh`)
+- Clones [streamr-docker-dev](https://github.com/streamr-dev/streamr-docker-dev/) command line tool (available via `./streamr-docker-dev/streamr-docker-dev/bin.sh`)
 - Starts Streamr Docker stack
 
 ## Required input arguments
