@@ -1,5 +1,8 @@
 name: 'Streamr Docker Dev Action'
 description: 'Start Streamr Docker Stack'
+branding:
+  icon: 'layers'  
+  color: 'orange'
 inputs:
   services-to-start:
     description: 'Streamr Docker Stack services to start'
