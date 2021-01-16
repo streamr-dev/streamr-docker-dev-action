@@ -2,6 +2,5 @@
 src
 release.sh
 action.yaml
-dist
 lib
 coverage
