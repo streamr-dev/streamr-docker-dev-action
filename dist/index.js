@@ -41,11 +41,15 @@ const core = __importStar(__nccwpck_require__(186));
 const exec = __importStar(__nccwpck_require__(514));
 const post_1 = __nccwpck_require__(95);
 const isPost = !!process.env['STATE_isPost'];
+core.info(`isPost=${isPost} env.STATE_isPost=process.env['STATE_isPost']`);
 if (!isPost) {
     run();
 }
 else {
     post_1.cleanup();
+}
+if (!isPost) {
+    core.saveState('isPost', 'true');
 }
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -179,7 +183,7 @@ const exec_1 = __importDefault(__nccwpck_require__(514));
 function cleanup() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            streamrDockerDevStop();
+            yield streamrDockerDevStop();
         }
         catch (error) {
             core.setFailed(error.message);
