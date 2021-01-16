@@ -1,6 +1,5 @@
 import * as core from '@actions/core'
-import exec from '@actions/exec'
-import { ExecOptions } from '@actions/exec'
+import * as exec from '@actions/exec'
 import { cleanup } from './post'
 
 const isPost = !!process.env['STATE_isPost']
@@ -12,12 +11,12 @@ if (!isPost) {
 
 export async function run(): Promise<void> {
     try {
-        gitCheckoutStreamrDockerDev()
-        copyStreamrDockerDevScript()
-        addStreamrDockerDevToOsPath()
-        configureDockerNetworking()
-        streamrDockerDevStart()
-        streamrDockerDevWait()
+        await gitCheckoutStreamrDockerDev()
+        await copyStreamrDockerDevScript()
+        await addStreamrDockerDevToOsPath()
+        await configureDockerNetworking()
+        await streamrDockerDevStart()
+        await streamrDockerDevWait()
     } catch (error) {
         core.setFailed(error.message)
     }
@@ -39,7 +38,7 @@ async function copyStreamrDockerDevScript(): Promise<void> {
         'streamr-docker-dev/bin.sh',
         'streamr-docker-dev/streamr-docker-dev',
     ]
-    const options: ExecOptions = {
+    const options: exec.ExecOptions = {
         cwd: 'streamr-docker-dev',
     }
     const exitCode: number = await exec.exec('cp', args, options)
@@ -62,13 +61,13 @@ async function configureDockerNetworking(): Promise<void> {
     core.info(`ifconfig docker networking exit code: ${exitCode}`)
 }
 
-async function streamrDockerDevStart(): Promise<void> {
+export async function streamrDockerDevStart(): Promise<void> {
     const inputOptions: core.InputOptions = {
         required: false,
     }
-    const s: string = core.getInput('services-to-start', inputOptions)
+    const s: string = core.getInput('services', inputOptions)
     if (s === null || s.length < 1) {
-        throw new Error('services-to-start can\'t be empty')
+        throw new Error("services input can't be empty")
     }
 
     const args: string[] = [

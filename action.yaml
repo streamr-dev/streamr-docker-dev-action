@@ -6,7 +6,7 @@ branding:
   icon: 'layers'
   color: 'orange'
 inputs:
-  services-to-start:
+  services:
     description: 'Streamr Docker Stack services to start'
     required: false
     # If changing the default list of services below, update examples in README.md

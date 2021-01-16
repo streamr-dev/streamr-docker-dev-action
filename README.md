@@ -29,7 +29,7 @@ None.
 ## Optional input arguments
 | Name              | Type   |Description                 |Default value|
 |-------------------|--------|----------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-|`services-to-start`|`String`|Customise services to start.|`mysql redis engine-and-editor cassandra parity-node0 parity-sidechain-node0 bridge data-union-server broker-node-storage-1 nginx smtp platform`|
+|`services`|`String`|Customise services to start.|`mysql redis engine-and-editor cassandra parity-node0 parity-sidechain-node0 bridge data-union-server broker-node-storage-1 nginx smtp platform`|
 |`start`            |`Bool`  |Whether to start services immediately.|`true`|
 |`wait`             |`Bool`  |Whether to wait for services to start. Requires `start: true`.|`true`|
 
@@ -60,7 +60,7 @@ jobs:
     - id: start-docker-services
       uses: streamr-dev/streamr-docker-dev-action@v1.0.0-alpha.3
       with:
-        services-to-start: 'redis mysql'
+        services: 'redis mysql'
         start: true
         wait: true
     - name: Run tests

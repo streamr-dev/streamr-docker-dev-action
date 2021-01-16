@@ -1,8 +1,7 @@
-import osm = require('os')
-import * as core from '@actions/core'
+import { run, streamrDockerDevStart } from '../src/main'
 
-import { run } from '../src/main'
-
-test('test', async () => {
-    await run()
+test('services input is validated', async () => {
+    const services: string = ''
+    process.env['INPUT_SERVICES'] = services
+    expect(await streamrDockerDevStart()).toThrowError("services input can't be empty")
 })

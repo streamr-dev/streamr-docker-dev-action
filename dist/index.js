@@ -35,13 +35,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.run = void 0;
+exports.streamrDockerDevStart = exports.run = void 0;
 const core = __importStar(__nccwpck_require__(186));
-const exec_1 = __importDefault(__nccwpck_require__(514));
+const exec = __importStar(__nccwpck_require__(514));
 const post_1 = __nccwpck_require__(95);
 const isPost = !!process.env['STATE_isPost'];
 if (!isPost) {
@@ -53,12 +50,12 @@ else {
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            gitCheckoutStreamrDockerDev();
-            copyStreamrDockerDevScript();
-            addStreamrDockerDevToOsPath();
-            configureDockerNetworking();
-            streamrDockerDevStart();
-            streamrDockerDevWait();
+            yield gitCheckoutStreamrDockerDev();
+            yield copyStreamrDockerDevScript();
+            yield addStreamrDockerDevToOsPath();
+            yield configureDockerNetworking();
+            yield streamrDockerDevStart();
+            yield streamrDockerDevWait();
         }
         catch (error) {
             core.setFailed(error.message);
@@ -74,7 +71,7 @@ function gitCheckoutStreamrDockerDev() {
             '1',
             'https://github.com/streamr-dev/streamr-docker-dev.git',
         ];
-        const exitCode = yield exec_1.default.exec('git', args);
+        const exitCode = yield exec.exec('git', args);
         core.info(`git clone streamr-docker-dev exit code: ${exitCode}`);
     });
 }
@@ -87,7 +84,7 @@ function copyStreamrDockerDevScript() {
         const options = {
             cwd: 'streamr-docker-dev',
         };
-        const exitCode = yield exec_1.default.exec('cp', args, options);
+        const exitCode = yield exec.exec('cp', args, options);
         core.info(`copy streamr-docker-dev script exit code: ${exitCode}`);
     });
 }
@@ -105,7 +102,7 @@ function configureDockerNetworking() {
             'docker0',
             '10.200.10.1/24',
         ];
-        const exitCode = yield exec_1.default.exec('sudo', args);
+        const exitCode = yield exec.exec('sudo', args);
         core.info(`ifconfig docker networking exit code: ${exitCode}`);
     });
 }
@@ -114,24 +111,25 @@ function streamrDockerDevStart() {
         const inputOptions = {
             required: false,
         };
-        const s = core.getInput('services-to-start', inputOptions);
+        const s = core.getInput('services', inputOptions);
         if (s === null || s.length < 1) {
-            throw new Error('services-to-start can\'t be empty');
+            throw new Error("services input can't be empty");
         }
         const args = [
             'start',
             ...s.split(' ')
         ];
-        const exitCode = yield exec_1.default.exec('streamr-docker-dev', args);
+        const exitCode = yield exec.exec('streamr-docker-dev', args);
         core.info(`streamr-docker-dev start services exit code: ${exitCode}`);
     });
 }
+exports.streamrDockerDevStart = streamrDockerDevStart;
 function streamrDockerDevWait() {
     return __awaiter(this, void 0, void 0, function* () {
         const args = [
             'wait',
         ];
-        const exitCode = yield exec_1.default.exec('streamr-docker-dev', args);
+        const exitCode = yield exec.exec('streamr-docker-dev', args);
         core.info(`streamr-docker-dev wait exit code: ${exitCode}`);
     });
 }

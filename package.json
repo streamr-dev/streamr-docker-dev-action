@@ -5,7 +5,7 @@
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc && ncc build",
-    "test": "jest --coverage"
+    "test": "jest"
   },
   "repository": {
     "type": "git",

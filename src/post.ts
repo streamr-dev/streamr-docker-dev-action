@@ -1,5 +1,3 @@
-import { countReset } from "console";
-import { run } from "./main";
 import * as core from '@actions/core'
 import exec from '@actions/exec'
 
