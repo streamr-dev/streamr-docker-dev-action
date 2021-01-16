@@ -6,7 +6,8 @@ jobs:
     name: Testing streamr-docker-dev-action
     steps:
     - uses: actions/checkout@v2.3.4
-    - uses: streamr-dev/streamr-docker-dev-action@dev-start-wait-attributes
+    - name: Use local streamr-dev/streamr-docker-dev-action
+      uses: ./
     - name: 'Test'
       run: curl -v http://localhost/api/v1/products
       shell: bash
