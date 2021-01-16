@@ -3,7 +3,7 @@ import exec from '@actions/exec'
 
 export async function cleanup(): Promise<void> {
     try {
-        streamrDockerDevStop()
+        await streamrDockerDevStop()
     } catch (error) {
         core.setFailed(error.message)
     }

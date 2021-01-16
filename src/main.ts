@@ -3,6 +3,7 @@ import * as exec from '@actions/exec'
 import { cleanup } from './post'
 
 const isPost = !!process.env['STATE_isPost']
+core.info(`isPost=${isPost} env.STATE_isPost=process.env['STATE_isPost']`)
 if (!isPost) {
     run()
 } else {
