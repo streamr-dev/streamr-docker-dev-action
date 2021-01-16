@@ -6,7 +6,7 @@ jobs:
     name: Testing streamr-docker-dev-action
     steps:
     - uses: actions/checkout@v2.3.4
-    - uses: streamr-dev/streamr-docker-dev-action@${{ github.sha }}
+    - uses: streamr-dev/streamr-docker-dev-action@${{ env.GITHUB_REF }}
     - name: 'Test'
       run: curl -v http://localhost/api/v1/products
       shell: bash
