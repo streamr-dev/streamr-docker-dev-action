@@ -9,45 +9,31 @@
 
 ![Test](https://github.com/streamr-dev/streamr-docker-dev-action/workflows/Test/badge.svg)
 
-## Description
+# Key features
 `streamr-docker-dev-action` is a custom GitHub Action that:
 - Clones [streamr-docker-dev](https://github.com/streamr-dev/streamr-docker-dev/) command line tool
 - Sets command `streamr-docker-dev` to `$PATH` and makes it available to next steps
 - Starts Streamr Docker stack
+# Table of Contents
+- [Required input arguments](#required-input-arguments)
+- [Optional input arguments](#optional-input-arguments)
+- [Required output arguments](#required-output-arguments)
+- [Optional output arguments](#optional-output-arguments)
+- [Secrets](#secrets)
+- [Environment variables](#environment-variables)
+- [Example](#example)
 
 ## Required input arguments
 None.
 
 ## Optional input arguments
-Currently the following services are started by default:
-- mysql
-- redis
-- engine-and-editor
-- cassandra parity-node0
-- parity-sidechain-node0
-- bridge
-- data-union-server
-- broker-node-storage-1
-- nginx
-- smtp
-- platform
+| Name              | Type   |Description                 |Default value|
+|-------------------|--------|----------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+|`services-to-start`|`String`|Customise services to start.|`mysql redis engine-and-editor cassandra parity-node0 parity-sidechain-node0 bridge data-union-server broker-node-storage-1 nginx smtp platform`|
+|`start`            |`Bool`  |Whether to start services immediately.|`true`|
+|`wait`             |`Bool`  |Whether to wait for services to start. Requires `start: true`.|`true`|
 
-You can customise services that are required by your use case with `services-to-start` input parameter.
-For example:
-```
-on: [push]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    name: Use streamr-docker-dev-action to start a few services
-    steps:
-    - uses: actions/checkout@v2
-    - id: start-docker-services
-      uses: streamr-dev/streamr-docker-dev-action@v1
-      with:
-        services-to-start: 'redis mysql engine-and-editor'
-```
+Following inputs can be used with `steps.with` keys.
 
 ## Required output arguments
 None.
@@ -68,10 +54,17 @@ on: [push]
 jobs:
   example:
     runs-on: ubuntu-latest
-    name: Using streamr-docker-dev-action
+    name: Use streamr-docker-dev-action to start a few services
     steps:
     - uses: actions/checkout@v2
-    - uses: streamr-dev/streamr-docker-dev-action@v1
-    - run: npm ci && npm test
-      shell: bash
+    - id: start-docker-services
+      uses: streamr-dev/streamr-docker-dev-action@v1.0.0-alpha.3
+      with:
+        services-to-start: 'redis mysql'
+        start: true
+        wait: true
+    - name: Run tests
+      run: |
+        streamr-docker-dev help
+        make -f Makefile.ci test
 ```
