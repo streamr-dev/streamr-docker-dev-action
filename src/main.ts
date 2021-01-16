@@ -9,6 +9,9 @@ if (!isPost) {
 } else {
     cleanup()
 }
+if (!isPost) {
+    core.saveState('isPost', 'true')
+}
 
 export async function run(): Promise<void> {
     try {
