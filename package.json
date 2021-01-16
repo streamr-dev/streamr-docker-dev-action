@@ -1,0 +1,24 @@
+{
+  "name": "streamr-docker-dev-action",
+  "version": "1.0.0-alpha.3",
+  "description": "GitHub Action to customise and start Streamr Docker stack",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/streamr-dev/streamr-docker-dev-action.git"
+  },
+  "keywords": [
+    "streamr",
+    "streamr-dev",
+    "docker"
+  ],
+  "author": "Kare Nuorteva <kare.nuorteva@streamr.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/streamr-dev/streamr-docker-dev-action/issues"
+  },
+  "homepage": "https://github.com/streamr-dev/streamr-docker-dev-action#readme"
+}
