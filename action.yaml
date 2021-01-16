@@ -16,9 +16,9 @@ runs:
           git clone --depth 1 https://github.com/streamr-dev/streamr-docker-dev.git
           cp streamr-docker-dev/streamr-docker-dev/bin.sh streamr-docker-dev/streamr-docker-dev/streamr-docker-dev
           echo "$(pwd)/streamr-docker-dev/streamr-docker-dev" >> $GITHUB_PATH
+          sudo ifconfig docker0 10.200.10.1/24
       shell: bash
     - run: |
-          sudo ifconfig docker0 10.200.10.1/24
           streamr-docker-dev start ${{ inputs.services-to-start }}
           streamr-docker-dev wait
       shell: bash
