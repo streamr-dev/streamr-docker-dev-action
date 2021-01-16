@@ -2,9 +2,10 @@
   "name": "streamr-docker-dev-action",
   "version": "1.0.0-alpha.3",
   "description": "GitHub Action to customise and start Streamr Docker stack",
-  "main": "src/index.js",
+  "main": "lib/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc && ncc build",
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -13,12 +14,29 @@
   "keywords": [
     "streamr",
     "streamr-dev",
-    "docker"
+    "streamr-docker-dev",
+    "docker",
+    "actions"
   ],
   "author": "Kare Nuorteva <kare.nuorteva@streamr.com>",
-  "license": "MIT",
+  "license": "AGPL-3.0-only",
   "bugs": {
     "url": "https://github.com/streamr-dev/streamr-docker-dev-action/issues"
   },
-  "homepage": "https://github.com/streamr-dev/streamr-docker-dev-action#readme"
+  "homepage": "https://github.com/streamr-dev/streamr-docker-dev-action#readme",
+  "devDependencies": {
+    "@actions/exec": "1.0.4",
+    "@types/jest": "26.0.20",
+    "@types/node": "14.14.21",
+    "@vercel/ncc": "0.27.0",
+    "dotenv": "8.2.0",
+    "jest": "26.6.3",
+    "jest-circus": "26.6.3",
+    "jest-runtime": "26.6.3",
+    "ts-jest": "26.4.4",
+    "typescript": "4.1.3"
+  },
+  "dependencies": {
+    "@actions/core": "1.2.6"
+  }
 }
