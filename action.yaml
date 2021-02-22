@@ -18,7 +18,6 @@ runs:
           echo "$(pwd)/streamr-docker-dev/streamr-docker-dev" >> $GITHUB_PATH
       shell: bash
     - run: |
-          sudo ifconfig docker0 10.200.10.1/24
           streamr-docker-dev start ${{ inputs.services-to-start }}
           streamr-docker-dev wait
       shell: bash
