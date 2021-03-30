@@ -18,6 +18,7 @@ runs:
           echo "$(pwd)/streamr-docker-dev/streamr-docker-dev" >> $GITHUB_PATH
       shell: bash
     - run: |
+          echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
           streamr-docker-dev start ${{ inputs.services-to-start }}
           streamr-docker-dev wait
       shell: bash
