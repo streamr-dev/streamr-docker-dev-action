@@ -23,7 +23,8 @@ Currently the following services are started by default:
 - mysql
 - redis
 - engine-and-editor
-- cassandra parity-node0
+- cassandra
+- parity-node0
 - parity-sidechain-node0
 - bridge
 - data-union-server
