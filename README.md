@@ -22,7 +22,7 @@ None.
 Currently the following services are started by default:
 - mysql
 - redis
-- engine-and-editor
+- core-api
 - cassandra
 - parity-node0
 - parity-sidechain-node0
@@ -47,7 +47,7 @@ jobs:
     - id: start-docker-services
       uses: streamr-dev/streamr-docker-dev-action@v1
       with:
-        services-to-start: 'redis mysql engine-and-editor'
+        services-to-start: 'redis mysql core-api'
 ```
 
 ## Required output arguments
