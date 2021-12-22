@@ -5,5 +5,12 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    commit-message:
+      prefix: ci
+      include: scope  
+    reviewers:
+      - kare  
     assignees:
       - DaisyDomergue
+    labels:
+      - ci
