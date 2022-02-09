@@ -34,6 +34,6 @@ fi
 validate_version "$version"
 
 git commit --allow-empty --message="Release v$version"
-git tag "v$version"
 git push
-git push --tags
+git tag "v$version"
+git push origin "v$version"
