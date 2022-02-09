@@ -27,7 +27,6 @@ Currently the following services are started by default:
 - parity-node0
 - parity-sidechain-node0
 - bridge
-- data-union-server
 - broker-node-storage-1
 - nginx
 - smtp
@@ -48,6 +47,23 @@ jobs:
       uses: streamr-dev/streamr-docker-dev-action@v1
       with:
         services-to-start: 'redis mysql core-api'
+```
+
+`branch` input parameter for using a different branch.
+Branch defaults to `main` branch.
+```
+on: [push]
+
+jobs:
+  test:
+	runs-on: ubuntu-latest
+	name: Use streamr-docker-dev-action to start a few services
+	steps:
+	- uses: actions/checkout@v2
+	- id: start-docker-services
+	  uses: streamr-dev/streamr-docker-dev-action@v1
+	  with:
+	    branch: my-test-branch
 ```
 
 ## Required output arguments
