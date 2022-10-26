@@ -7,9 +7,7 @@ updates:
       interval: "daily"
     commit-message:
       prefix: ci
-      include: scope  
-    reviewers:
-      - kare  
+      include: scope
     assignees:
       - DaisyDomergue
     labels:
