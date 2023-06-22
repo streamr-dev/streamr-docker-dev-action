@@ -8,7 +8,7 @@ inputs:
     description: 'Streamr Docker Stack services to start'
     required: false
     # If changing the default list of services below, update examples in README.md
-    default: 'mysql redis core-api cassandra parity-node0 parity-sidechain-node0 bridge broker-node-storage-1 nginx smtp platform'
+    default: 'mysql cassandra parity-node0 parity-sidechain-node0 broker-node-storage-1 nginx platform'
   branch:
     description: 'Streamr Docker Branch to Use'
     required: false

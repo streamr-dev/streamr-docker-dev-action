@@ -21,15 +21,11 @@ None.
 ## Optional input arguments
 Currently the following services are started by default:
 - mysql
-- redis
-- core-api
 - cassandra
 - parity-node0
 - parity-sidechain-node0
-- bridge
 - broker-node-storage-1
 - nginx
-- smtp
 - platform
 
 You can customise services that are required by your use case with `services-to-start` input parameter.
