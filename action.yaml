@@ -19,7 +19,7 @@ runs:
     - uses: actions/checkout@v3
       with:
         repository: streamr-dev/streamr-docker-dev
-        ref: ${{ inputs.branch-to-use }}
+        ref: ${{ inputs.branch }}
         path: streamr-docker-dev
     - run: |
           cp streamr-docker-dev/streamr-docker-dev/bin.sh streamr-docker-dev/streamr-docker-dev/streamr-docker-dev
