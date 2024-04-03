@@ -22,6 +22,7 @@ runs:
         ref: ${{ inputs.branch }}
         path: streamr-docker-dev
     - run: |
+          sudo apt-get install docker-compose-plugin
           cp streamr-docker-dev/streamr-docker-dev/bin.sh streamr-docker-dev/streamr-docker-dev/streamr-docker-dev
           echo "$(pwd)/streamr-docker-dev/streamr-docker-dev" >> $GITHUB_PATH
       shell: bash
